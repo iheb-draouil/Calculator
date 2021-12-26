@@ -15,7 +15,7 @@ namespace Source
         public double GetResult(string input)
         {
             if (input.Equals("")) {
-                throw new Exception("Empty Expressions are not allowed");
+                throw new EmptyExpression();
             }
             
             var tokens = _parser.Preprocess(_lexer.Tokenize(input));
