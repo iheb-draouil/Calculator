@@ -183,6 +183,10 @@ namespace Source
                         views.Push(value);
                     }
 
+                    else {
+                        throw new UnreachableCode("Nestable node expected");
+                    }
+
                 }
 
                 else if (token is FunctionName fname) {
@@ -206,7 +210,7 @@ namespace Source
                         }
 
                         else {
-                            throw new UnreachableCode("A function call node can only be preceeded with a nestable node");
+                            throw new UnreachableCode("An Operation or Parenthesis node expected");
                         }
                     
                     }
@@ -239,6 +243,10 @@ namespace Source
                                 parenthesis._child = operation;
                             }
 
+                            else {
+                                throw new UnreachableCode("A FunctionCall or Parenthesis node expected");
+                            }
+
                         }
 
                     }
@@ -263,6 +271,10 @@ namespace Source
 
                                 else if (views.Peek() is Parenthesis parenthesis) {
                                     parenthesis._child = operation;
+                                }
+
+                                else {
+                                    throw new UnreachableCode("A FunctionCall or Parenthesis node expected");
                                 }
 
                             }
@@ -290,12 +302,16 @@ namespace Source
                                 parentParenthesis._child = operation;
                             }
 
+                            else {
+                                throw new UnreachableCode("Nestable node expected");
+                            }
+
                         }
 
                     }
 
                     else {
-                        throw new UnreachableCode("An operation node can only be preceeded with a nestable node");
+                        throw new UnreachableCode("Unrecognized node type");
                     }
 
                     views.Push(operation);
@@ -320,7 +336,7 @@ namespace Source
                         }
 
                         else {
-                            throw new UnreachableCode("A parenthesis node can only be preceeded with a nestable node");
+                            throw new UnreachableCode("Nestable node expected");
                         }
 
                     }
@@ -353,7 +369,7 @@ namespace Source
                 }
 
                 else {
-                    throw new UnreachableCode("Unrecognized token");
+                    throw new UnreachableCode("Unrecognized token type");
                 }
                 
             }
