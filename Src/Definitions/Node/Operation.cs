@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     class Operation : Node
     {
@@ -18,6 +18,7 @@ namespace MathExtensions
 
             return _operator._mapping(_loperand.Evaluate(), _roperand.Evaluate());
         }
+        
     }
     
 }

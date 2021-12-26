@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public abstract class Node
     {

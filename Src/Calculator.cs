@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
 
     public class Calculator
@@ -24,6 +24,7 @@ namespace MathExtensions
             .Evaluate()
             ;
         }
+        
     }
     
 }

@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public class UnreachableCode : Exception
     {

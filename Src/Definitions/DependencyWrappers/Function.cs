@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public class Function
     {
@@ -15,6 +15,7 @@ namespace MathExtensions
             _name = name;
             _mapping = mapping;
         }
+        
     }
 
 }

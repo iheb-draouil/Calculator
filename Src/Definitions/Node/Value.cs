@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     class Value : Node
     {
@@ -10,6 +10,7 @@ namespace MathExtensions
         {
             return _value;
         }
+        
     }
     
 }

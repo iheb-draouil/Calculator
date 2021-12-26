@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public class NumberConstant
     {
@@ -27,6 +27,7 @@ namespace MathExtensions
             _identifier = name;
             _value = value;
         }
+        
     }
 
 }

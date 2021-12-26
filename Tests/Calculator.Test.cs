@@ -3,7 +3,7 @@ using System;
 
 using Xunit;
 
-using MathExtensions;
+using Source;
 
 namespace Tests
 {
@@ -64,72 +64,82 @@ namespace Tests
 
             calculator = new Calculator(lexer, parser);
         }
-
+        
+        /// <summary>
+        /// Expecting numbers (Number, NumberName or NumberSymbols) evaluates to their
+        /// internal values if they are present by themselves in the input expression.
+        /// </summary>
         [Fact]
         public void Test1()
         {
             Assert.Equal(Math.PI, calculator.GetResult("π"));
         }
 
+        /// <summary>
+        /// The precedence of the * and + operators must be respected.
+        /// </summary>
         [Fact]
         public void Test2()
         {
             Assert.Equal(2*Math.PI+1.0/2, calculator.GetResult("2*π+1/2"));
         }
 
+        /// <summary>
+        /// In case two operators with the same precedence are encountered, the expression
+        /// corresponding to the one further to the left is evaluated first.
+        /// </summary>
         [Fact]
         public void Test3()
         {
             Assert.Equal(2, calculator.GetResult("1-2+3"));
         }
 
+        /// <summary>
+        /// In case two operators with the same precedence are encountered, the expression
+        /// corresponding to the one further to the left is evaluated first.
+        /// </summary>
         [Fact]
         public void Test4()
         {
             Assert.Equal(0, calculator.GetResult("1+2-3"));
         }
 
+        /// <summary>
+        /// Parenthesis around an expression must have no effect on its value.
+        /// </summary>
         [Fact]
         public void Test5()
         {
             Assert.Equal(2*Math.PI+1.0/2, calculator.GetResult("(2*π+1/2)"));
         }
 
+        /// <summary>
+        /// Testing a single and 2-variable functions.
+        /// </summary>
         [Fact]
         public void Test6()
         {
             Assert.Equal(1+(Math.Log(2.0/3)-4+5.0/(6+7))/8, calculator.GetResult("1+mv2(ln(2/3)-4,5/(6+7))/8"));
         }
 
+        /// <summary>
+        /// Testing division by zero.
+        /// </summary>
         [Fact]
         public void Test7()
-        {
-            Assert.Equal(1+(1.0/2/3+5.0/(6+7))/8, calculator.GetResult("1+mv2(1/2/3,5/(6+7))/8"));
-        }
-
-        [Fact]
-        public void Test8()
-        {
-            Assert.Equal(1+((2.0/3)/4+5.0/(6+7))/8, calculator.GetResult("1+mv2((2/3)/4,5/(6+7))/8"));
-        }
-
-        [Fact]
-        public void Test9()
-        {
-            Assert.Equal(1+((2.0/3)-4+5.0/(6+7))/8, calculator.GetResult("1+mv2((2/3)-4,5/(6+7))/8"));
-        }
-
-        [Fact]
-        public void Test10()
         {
             Assert.Throws<Exception>(() => calculator.GetResult("1/0"));
         }
 
+        /// <summary>
+        /// Testing a 3-variable functions.
+        /// </summary>
         [Fact]
-        public void Test11()
+        public void Test8()
         {
             Assert.Equal(1+((2.0/3)-4+5.0/(6+7)+5.0/(6+7))/8, calculator.GetResult("1+mv3((2/3)-4,5/(6+7),5/(6+7))/8"));
         }
+        
     }
     
 }

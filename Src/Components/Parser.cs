@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public class Parser
     {
@@ -46,18 +46,19 @@ namespace MathExtensions
                 && tokens[0] is not Number
                 && tokens[0] is not NumberSymbol
                 && tokens[0] is not OpeningParenthesis) {
-                throw new ExceptionAtPosition("Unexpected Token", tokens[0]._position, tokens[0]._length);
-            }
-
-            if (tokens[0] is Name name1 && tokens.Count > 1 && tokens[1] is not OpeningParenthesis) {
-                result.Add(new NumberName(name1._value, name1._position, name1._length));
-            }
-
-            else {
-                result.Add(tokens[0]);
+                throw new ErrorAtPosition("Unexpected Token", tokens[0]._position, tokens[0]._length);
             }
 
             if (tokens.Count == 1) {
+
+                if (tokens[0] is Name name && tokens.Count > 1 && tokens[1] is not OpeningParenthesis) {
+                    result.Add(new NumberName(name._value, name._position));
+                }
+
+                else {
+                    result.Add(tokens[0]);
+                }
+
                 return result;
             }
 
@@ -78,24 +79,24 @@ namespace MathExtensions
                     || (token1 is OperatorSymbol && token2 is not Number && token2 is not Name && token2 is not NumberSymbol && token2 is not OpeningParenthesis)
                     || (token1 is OpeningParenthesis && token2 is not Number && token2 is not Name && token2 is not NumberSymbol && token2 is not OpeningParenthesis)
                     || (token1 is Name && token2 is not OpeningParenthesis && token2 is not OperatorSymbol && token2 is not Comma && token2 is not ClosingParenthesis)) {
-                    throw new ExceptionAtPosition("Unexpected Token", token2._position, token2._length);
+                    throw new ErrorAtPosition("Unexpected Token", token2._position, token2._length);
                 }
 
-                if (token1 is Name name2) {
+                if (token1 is Name name) {
                 
                     if (token2 is OpeningParenthesis) {
-                        result.Add(new FunctionName(name2._value, name2._position, token1._length));
+                        result.Add(new FunctionName(name._value, name._position));
                         functionCalls.Push(i);
                     }
                     
                     else {
-                        result.Add(new NumberName(name2._value, name2._position, token1._length));
+                        result.Add(new NumberName(name._value, name._position));
                     }
 
                 }
 
                 else if (token1 is Comma && !functionCalls.Any()) {
-                    throw new ExceptionAtPosition("Unexpected Token", token1._position, token1._length);
+                    throw new ErrorAtPosition("Unexpected Token", token1._position, token1._length);
                 }
 
                 else {
@@ -124,13 +125,13 @@ namespace MathExtensions
                 && tokens.Last() is not Number
                 && tokens.Last() is not NumberSymbol
                 && tokens.Last() is not ClosingParenthesis) {
-                throw new ExceptionAtPosition("Unexpected Token", tokens.Last()._position, tokens.Last()._length);
+                throw new ErrorAtPosition("Unexpected Token", tokens.Last()._position, tokens.Last()._length);
             }
 
             result.Add(tokens.Last());
 
             if (openingParenthesisMatch.Any() || closingParenthesisMatch.Any() ) {
-                throw new Exception("Unmatched Parenthesis");
+                throw new UnmatchingParenthesis();
             }
 
             return result;
@@ -189,7 +190,7 @@ namespace MathExtensions
                     Function? function;
                     
                     if (!_functions.TryGetValue(fname._value, out function)) {
-                        throw new ExceptionAtPosition($"Function Not Found", fname._position, fname._length);
+                        throw new ErrorAtPosition($"Function Not Found", fname._position, fname._length);
                     }
 
                     var fcall = new FunctionCall(function);
@@ -218,7 +219,7 @@ namespace MathExtensions
                     Operator? op;
                     
                     if (!_operators.TryGetValue(operatorSymbol._value, out op)) {
-                        throw new ExceptionAtPosition($"Operator Not Found", operatorSymbol._position, operatorSymbol._length);
+                        throw new ErrorAtPosition($"Operator Not Found", operatorSymbol._position, operatorSymbol._length);
                     }
                     
                     var operation = new Operation(op);

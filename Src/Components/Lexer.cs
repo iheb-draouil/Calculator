@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace MathExtensions
+namespace Source
 {
     public class Lexer
     {
@@ -119,7 +119,7 @@ namespace MathExtensions
             for (int i = from; i < input.Length; i++)
             {
                 if (!IsLegalCharacter(input[i])) {
-                    throw new ExceptionAtPosition("Illegal character", i, 1);
+                    throw new ErrorAtPosition("Illegal character", i, 1);
                 }
 
                 var sequence = input.Substring(from, (i-from)+1);
@@ -136,7 +136,7 @@ namespace MathExtensions
                 else if (_startsNumber.IsMatch(sequence)) {
                     
                     if (i == input.Length-1 && !_number.IsMatch(sequence)) {
-                        return sequence.Substring(0, sequence.Length-1);
+                        throw new ErrorAtPosition("Illegal Sequence", from, sequence.Length);
                     }
                     
                     continue;
@@ -150,7 +150,7 @@ namespace MathExtensions
                         return subsequence;
                     }
 
-                    throw new ExceptionAtPosition("Illegal Sequence", from, sequence.Length);
+                    throw new ErrorAtPosition("Illegal Sequence", from, sequence.Length);
                 }
 
             }
@@ -177,6 +177,7 @@ namespace MathExtensions
 
             return tokens;
         }
+        
     }
     
 }

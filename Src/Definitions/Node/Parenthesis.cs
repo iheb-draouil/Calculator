@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     class Parenthesis : Node
     {
@@ -12,6 +12,7 @@ namespace MathExtensions
 
             return _child.Evaluate();
         }
+        
     }
 
 }

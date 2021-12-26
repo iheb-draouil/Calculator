@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public class Operator
     {
@@ -18,6 +18,7 @@ namespace MathExtensions
             _mapping = mapping;
             _precedence = precedence;
         }
+        
     }
 
 }

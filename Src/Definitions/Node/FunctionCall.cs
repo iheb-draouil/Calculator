@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     class FunctionCall : Node
     {
@@ -17,6 +17,7 @@ namespace MathExtensions
 
             return _function._mapping(_arguments.Reverse().Select(e => e.Evaluate()).ToList());
         }
+        
     }
     
 }

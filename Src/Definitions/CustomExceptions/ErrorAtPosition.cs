@@ -1,6 +1,6 @@
-namespace MathExtensions
+namespace Source
 {
-    public class ExceptionAtPosition : Exception
+    public class ErrorAtPosition : Exception
     {
         public string _message;
 
@@ -8,12 +8,13 @@ namespace MathExtensions
 
         public int _length;
 
-        public ExceptionAtPosition(string message, int position, int length) : base(message)
+        public ErrorAtPosition(string message, int position, int length) : base(message)
         {
             _message = message;
             _position = position;
             _length = length;
         }
+        
     }
 
 }

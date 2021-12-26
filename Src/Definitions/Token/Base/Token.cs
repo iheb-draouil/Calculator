@@ -1,4 +1,4 @@
-namespace MathExtensions
+namespace Source
 {
     public abstract class Token
     {
@@ -11,6 +11,7 @@ namespace MathExtensions
             _position = position;
             _length = length;
         }
+        
     }
 
 }
