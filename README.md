@@ -51,7 +51,7 @@ var divide = new Operator('/', (a, b) => {
     return a / b;
 }, 1);
 
-// The natural logarithm
+// Natural logarithm
 var ln = new Function("ln", arguments => {
 
     if (arguments.Count() != 1) {
@@ -61,7 +61,7 @@ var ln = new Function("ln", arguments => {
     return Math.Log(arguments.First());
 });
 
-// Example multi-variable function
+// Example of a multi-variable function
 var mv = new Function("mv", arguments => {
 
     if (arguments.Count() != 2) {
@@ -71,7 +71,7 @@ var mv = new Function("mv", arguments => {
     return arguments[0] + arguments[1];
 });
 
-// Example number constant
+// Example of a number constant
 var pi = new NumberConstant("π", Math.PI);
 
 var lexer = new Lexer();
