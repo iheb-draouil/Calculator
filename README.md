@@ -3,23 +3,17 @@ Calculator
 
 A simple .NET library for parsing and evaluating mathematical expressions.
 
-<br/>
-
 # Installation
 
 Easily done if you have the dotnet CLI installed.
 
-<br/>
-
 ## Install from Nuget
----
 
 ```
 dotnet add package calculator
 ```
 
 ## Build from source
----
 
 Build the project
 
