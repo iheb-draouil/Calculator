@@ -5,7 +5,7 @@ A simple .NET library for parsing and evaluating mathematical expressions.
 
 ## Installation
 
-Easily done if you have the dotnet CLI installed.
+Easily done using the dotnet CLI.
 
 ### Install from Nuget
 
