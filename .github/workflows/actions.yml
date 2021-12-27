@@ -1,0 +1,12 @@
+name: 
+on: [push]
+jobs:
+  Unit-Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.1'
+          include-prerelease: true
+      - run: dotnet test
