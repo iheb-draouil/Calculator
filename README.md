@@ -12,7 +12,6 @@ Easily done if you have the dotnet CLI installed.
 ```
 dotnet add package calculator
 ```
-
 ## Build from source
 
 Build the project
