@@ -1,6 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <PackageId>calculator</PackageId>
+        <Authors>Iheb Draouil</Authors>
+        <Version>1.0.0</Version>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
