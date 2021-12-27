@@ -139,6 +139,12 @@ namespace Tests
         {
             Assert.Equal(1+((2.0/3)-4+5.0/(6+7)+5.0/(6+7))/8, calculator.GetResult("1+mv3((2/3)-4,5/(6+7),5/(6+7))/8"));
         }
+
+        [Fact]
+        public void Test9()
+        {
+            Assert.Equal(0, 1);
+        }
         
     }
     
