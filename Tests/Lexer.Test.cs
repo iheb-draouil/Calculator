@@ -313,11 +313,26 @@ namespace Tests
         }
 
         /// <summary>
+        /// Expecting 3 OperatorSymbols.
+        /// </summary>
+        [Fact]
+        public void Test20()
+        {
+            lexer.Tokenize("1 1")
+            .Should()
+            .BeEquivalentTo(new List<Token> {
+                new Number(1, 0, 1),
+                new Number(1, 2, 1),
+            }, options => options.RespectingRuntimeTypes())
+            ;
+        }
+
+        /// <summary>
         /// Expecting a Number, a comma and a Number that correspond to the sequence "123", "," and "456"
         /// respectively.
         /// </summary>
         [Fact]
-        public void Test20()
+        public void Test21()
         {
             lexer.Tokenize("123,456")
             .Should()
@@ -334,7 +349,7 @@ namespace Tests
         /// respectively.
         /// </summary>
         [Fact]
-        public void Test21()
+        public void Test22()
         {
             lexer.Tokenize("1+2")
             .Should()
@@ -350,7 +365,7 @@ namespace Tests
         /// Testing a complex expression comprizing all token classes.
         /// </summary>
         [Fact]
-        public void Test22()
+        public void Test23()
         {
             lexer.Tokenize("mv(π/(2+3),(1+2)/(2+3))")
             .Should()

@@ -79,5 +79,5 @@ var parser = new Parser(
 
 var calculator = new Calculator(lexer, parser);
 
-Console.WriteLine("1+ln(π+2)/(mv(3,4)+5)"); // Outputs 1.1364469071880001
+Console.WriteLine(calculator.GetResult("1+ln(π+2)/(mv(3,4)+5)")); // Outputs 1.1364469071880001
 ```

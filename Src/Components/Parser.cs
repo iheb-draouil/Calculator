@@ -63,7 +63,10 @@ namespace Source
             }
 
             var functionCalls = new Stack<int>();
-
+            // 2
+            // 2,3
+            // ,
+            // ln((2),2)+1,1
             var openingParenthesisMatch = new Stack<int>();
             var closingParenthesisMatch = new Stack<int>();
 
@@ -86,7 +89,7 @@ namespace Source
                 
                     if (token2 is OpeningParenthesis) {
                         result.Add(new FunctionName(name._value, name._position));
-                        functionCalls.Push(i);
+                        functionCalls.Push(token2._position);
                     }
                     
                     else {
@@ -95,8 +98,13 @@ namespace Source
 
                 }
 
-                else if (token1 is Comma && !functionCalls.Any()) {
-                    throw new ErrorAtPosition("Unexpected Token", token1._position, token1._length);
+                else if (token1 is Comma) {
+
+                    if (!functionCalls.Any() || functionCalls.Peek() != openingParenthesisMatch.Peek()) {
+                        throw new ErrorAtPosition("Unexpected Token", token1._position, token1._length);
+                    }
+
+                    result.Add(token1);
                 }
 
                 else {
@@ -110,6 +118,11 @@ namespace Source
                 if (token2 is ClosingParenthesis) {
                     
                     if (openingParenthesisMatch.Any()) {
+
+                        if (functionCalls.Any() && functionCalls.Peek() == openingParenthesisMatch.Peek()) {
+                            functionCalls.Pop();
+                        }
+
                         openingParenthesisMatch.Pop();
                     }
 

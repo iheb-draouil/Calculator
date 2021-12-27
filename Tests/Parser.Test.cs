@@ -172,6 +172,69 @@ namespace Tests
             ;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Fact]
+        public void Test9()
+        {
+            ((Action) (() => parser
+            .Preprocess(new List<Token> {
+                new Number(1, 0, 1),
+                new Number(1, 2, 1),
+            })))
+            .Should()
+            .Throw<ErrorAtPosition>()
+            .Where(e => e._position == 2 && e._length == 1)
+            ;
+        }
+
+        /// <summary>
+        /// Testing the usage of commas outside of a function call
+        /// </summary>
+        [Fact]
+        public void Test10()
+        {
+            ((Action) (() => parser
+            .Preprocess(new List<Token> {
+                new Name("ln", 0),
+                new OpeningParenthesis(2),
+                new Number(1, 3, 1),
+                new ClosingParenthesis(4),
+                new OperatorSymbol('+', 5),
+                new Number(1, 6, 1),
+                new Comma(7),
+                new Number(1, 8, 1),
+            })))
+            .Should()
+            .Throw<ErrorAtPosition>()
+            .Where(e => e._position == 7 && e._length == 1)
+            ;
+        }
+
+        /// <summary>
+        /// Testing the usage of commas not directly under the function call's scope
+        /// </summary>
+        [Fact]
+        public void Test11()
+        {
+            ((Action) (() => parser
+            .Preprocess(new List<Token> {
+                new Name("mv", 0),
+                new OpeningParenthesis(2),
+                new OpeningParenthesis(3),
+                new Number(1, 4, 1),
+                new Comma(5),
+                new Number(1, 6, 1),
+                new ClosingParenthesis(7),
+                new ClosingParenthesis(8),
+            })))
+            .Should()
+            .Throw<ErrorAtPosition>()
+            .Where(e => e._position == 5 && e._length == 1)
+            ;
+        }
+
     }
     
 }
