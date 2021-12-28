@@ -63,10 +63,7 @@ namespace Source
             }
 
             var functionCalls = new Stack<int>();
-            // 2
-            // 2,3
-            // ,
-            // ln((2),2)+1,1
+            
             var openingParenthesisMatch = new Stack<int>();
             var closingParenthesisMatch = new Stack<int>();
 
