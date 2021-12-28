@@ -104,12 +104,13 @@ namespace Source
                     result.Add(token1);
                 }
 
-                else {
+                else if (token1 is OpeningParenthesis) {
+                    openingParenthesisMatch.Push(token1._position);
                     result.Add(token1);
                 }
 
-                if (token1 is OpeningParenthesis) {
-                    openingParenthesisMatch.Push(token1._position);
+                else {
+                    result.Add(token1);
                 }
                 
                 if (token2 is ClosingParenthesis) {
