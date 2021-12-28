@@ -152,10 +152,8 @@ namespace Source
         {
             var views = new Stack<Node>();
 
-            for (var i = 0; i < tokens.Count; i++)
+            foreach (var token in tokens)
             {
-                var token = tokens[i];
-                
                 if (token is Number || token is NumberName || token is NumberSymbol) {
 
                     Value value;
