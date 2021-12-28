@@ -58,7 +58,13 @@ var ln = new Function("ln", arguments => {
         throw new Exception("The natural logarithm takes exactly 1 argument");
     }
 
-    return Math.Log(arguments.First());
+    var argument = arguments.First();
+
+    if (argument <= 0) {
+        throw new Exception("The natural logarithm only takes strictly positive numbers");
+    }
+
+    return Math.Log(argument);
 });
 
 // Example of a multi-variable function
