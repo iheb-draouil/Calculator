@@ -10,7 +10,7 @@ Easily done using the dotnet CLI.
 ### Via Nuget
 
 ```
-dotnet add package calculator
+dotnet add package Math-Eval
 ```
 
 ### Build from source
