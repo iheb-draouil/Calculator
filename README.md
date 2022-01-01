@@ -1,4 +1,4 @@
-Calculator
+Math-Eval
 ===============
 
 A simple .NET library for parsing and evaluating mathematical expressions with support for user-defined functions, operators and number constants.
