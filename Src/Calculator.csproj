@@ -3,7 +3,7 @@
     <PropertyGroup>
         <PackageId>Math-Eval</PackageId>
         <Authors>Iheb Draouil</Authors>
-        <Version>1.0.0</Version>
+        <Version>1.0.1</Version>
         <RepositoryUrl>https://github.com/iheb-draouil/Math-Eval</RepositoryUrl> 
         <RepositoryType>git</RepositoryType> 
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
