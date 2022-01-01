@@ -1,4 +1,4 @@
-Math-Eval
+Math-Eval [![NuGet Version](https://buildstats.info/nuget/Math-Eval)](https://www.nuget.org/packages/Math-Eval/)
 ===============
 
 A simple .NET library for parsing and evaluating mathematical expressions with support for user-defined functions, operators and number constants.
