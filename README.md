@@ -74,7 +74,7 @@ var mv = new Function("mv", arguments => {
 });
 
 // Example of a number constant
-var pi = new NumberConstant("π", Math.PI);
+var pi = new NumberConstant('π', Math.PI);
 
 var lexer = new Lexer();
 
