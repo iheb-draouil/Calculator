@@ -8,20 +8,18 @@ namespace Source
 
         public NumberConstant(char symbol, double value)
         {
-            var identifier = symbol.ToString();
-            
-            if (!Lexer._name.IsMatch(identifier)) {
-                throw new Exception($"Invalid constant name '{identifier}'");
+            if (!Lexer._numberSymbols.Contains(symbol)) {
+                throw new Exception($"Invalid constant symbol '{symbol}'");
             }
             
-            _identifier = identifier;
+            _identifier = symbol.ToString();
             _value = value;
         }
 
         public NumberConstant(string name, double value)
         {
-            if (!Lexer._numberSymbols.Contains(name[0])) {
-                throw new Exception($"Invalid constant symbol '{name}'");
+            if (!Lexer._name.IsMatch(name)) {
+                throw new Exception($"Invalid constant name '{name}'");
             }
             
             _identifier = name;

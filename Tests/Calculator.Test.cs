@@ -52,7 +52,7 @@ namespace Tests
                 return a / b;
             }, 1);
 
-            var pi = new NumberConstant("π", Math.PI);
+            var pi = new NumberConstant('π', Math.PI);
 
             var lexer = new Lexer();
 
