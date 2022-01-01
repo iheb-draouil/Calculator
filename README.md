@@ -7,15 +7,11 @@ A simple .NET library for parsing and evaluating mathematical expressions.
 
 Easily done using the dotnet CLI.
 
-<!-- 
-
 ### Via Nuget
 
 ```
 dotnet add package calculator
 ```
-
--->
 
 ### Build from source
 
