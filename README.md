@@ -34,6 +34,8 @@ Then reference the dll in your project's .csproj file
 ## Usage
 
 ```C#
+using MathEval;
+
 // Standard mathematical operations
 var addition = new Operator('+', (a, b) => a + b, 0);
 var subtraction = new Operator('-', (a, b) => a - b, 0);
@@ -79,12 +81,12 @@ var pi = new NumberConstant('π', Math.PI);
 var lexer = new Lexer();
 
 var parser = new Parser(
-    new[] { ln },
+    new[] { ln, mv },
     new[] { addition, subtraction, multiplication, division },
     new[] { pi }
 );
 
-vsion calculator = new Calculator(lexer, parser);
+var calculator = new Calculator(lexer, parser);
 
 Console.WriteLine(calculator.GetResult("1+ln(π+2)/(mv(3,4)*5)")); // Outputs 1.0467817967501714
 ```
