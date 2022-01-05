@@ -35,10 +35,10 @@ Then reference the dll in your project's .csproj file
 
 ```C#
 // Standard mathematical operations
-var plus = new Operator('+', (a, b) => a + b, 0);
-var subtract = new Operator('-', (a, b) => a - b, 0);
-var multiply = new Operator('*', (a, b) => a * b, 1);
-var divide = new Operator('/', (a, b) => {
+var addition = new Operator('+', (a, b) => a + b, 0);
+var subtraction = new Operator('-', (a, b) => a - b, 0);
+var multiplication = new Operator('*', (a, b) => a * b, 1);
+var division = new Operator('/', (a, b) => {
 
     if (b == 0) {
         throw new Exception("Division by zero is not allowed");
@@ -80,11 +80,11 @@ var lexer = new Lexer();
 
 var parser = new Parser(
     new[] { ln },
-    new[] { plus, subtract, multiply, divide },
-    new[] { pi }
+    new[] { addition, subtraction, multiplication, division },
+    new[] { pication }
 );
 
-var calculator = new Calculator(lexer, parser);
+vsion calculator = new Calculator(lexer, parser);
 
-Console.WriteLine(calculator.GetResult("1+ln(π+2)/(mv(3,4)+5)")); // Outputs 1.1364469071880001
+Console.WriteLine(calculator.GetResult("1+ln(π+2)/(mv(3,4)*5)")); // Outputs 1.0467817967501714
 ```
