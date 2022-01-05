@@ -1,4 +1,4 @@
-namespace Source
+namespace MathEval
 {
 
     public class Calculator

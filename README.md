@@ -81,7 +81,7 @@ var lexer = new Lexer();
 var parser = new Parser(
     new[] { ln },
     new[] { addition, subtraction, multiplication, division },
-    new[] { pication }
+    new[] { pi }
 );
 
 vsion calculator = new Calculator(lexer, parser);

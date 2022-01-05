@@ -1,4 +1,4 @@
-namespace Source
+namespace MathEval
 {
     class FunctionCall : Node
     {

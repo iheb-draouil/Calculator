@@ -5,7 +5,7 @@ using System;
 using FluentAssertions;
 using Xunit;
 
-using Source;
+using MathEval;
 
 namespace Tests
 {

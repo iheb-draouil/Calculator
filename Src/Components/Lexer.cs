@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Source
+namespace MathEval
 {
     public class Lexer
     {
