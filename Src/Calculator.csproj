@@ -3,9 +3,10 @@
     <PropertyGroup>
         <PackageId>Math-Eval</PackageId>
         <Authors>Iheb Draouil</Authors>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <RepositoryUrl>https://github.com/iheb-draouil/Math-Eval</RepositoryUrl> 
-        <RepositoryType>git</RepositoryType> 
+        <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
