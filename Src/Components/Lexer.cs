@@ -135,6 +135,7 @@ namespace MathEval
                 
                 else if (_startsNumber.IsMatch(sequence)) {
                     
+                    // todo: for example "1." let it be so that it will be caught by ToToken
                     if (i == input.Length-1 && !_number.IsMatch(sequence)) {
                         throw new ErrorAtPosition("Illegal Sequence", from, sequence.Length);
                     }
@@ -144,6 +145,8 @@ namespace MathEval
                 
                 else {
                     
+                    // todo: try to recall why you switched from FormsToken(input[i], input[i+1])
+                    // perhaps because of the edge cases (first and last characters)
                     var subsequence = sequence.Substring(0, sequence.Length-1);
 
                     if (_number.IsMatch(subsequence) || _name.IsMatch(subsequence) || _whiteSpaces.IsMatch(subsequence)) {

@@ -32,8 +32,7 @@ namespace Tests
                 new NumberSymbol('π', 1),
                 new Comma(2),
                 new ClosingParenthesis(3),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -48,8 +47,7 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new NumberSymbol('π', 0),
                 new Name("_xxx", 1)
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -61,8 +59,7 @@ namespace Tests
             lexer.Tokenize("_123")
             .First()
             .Should()
-            .BeEquivalentTo(new Name("_123", 0))
-            ;
+            .BeEquivalentTo(new Name("_123", 0));
         }
 
         /// <summary>
@@ -74,8 +71,7 @@ namespace Tests
             lexer.Tokenize("xxx_123")
             .First()
             .Should()
-            .BeEquivalentTo(new Name("xxx_123", 0))
-            ;
+            .BeEquivalentTo(new Name("xxx_123", 0));
         }
 
         /// <summary>
@@ -90,8 +86,7 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new Number(123, 0, 3),
                 new Name("_xxx", 3)
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -106,13 +101,12 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new Number(1.23, 0, 4),
                 new Name("xxx", 4)
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
         /// Expecting the "1.2" sequence to be interpreted as a Number, the "_3" sequence to
-        /// be interpreted as a Name while the sequence "π" as an OperatorSymbol.
+        /// be interpreted as a Name while the sequence "+" as an OperatorSymbol.
         /// </summary>
         [Fact]
         public void Test7()
@@ -123,8 +117,7 @@ namespace Tests
                 new Number(1.2, 0, 3),
                 new Name("_3", 3),
                 new OperatorSymbol('+', 5)
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -139,8 +132,7 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new Number(1.2, 0, 3),
                 new Name("ln", 3),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -154,8 +146,7 @@ namespace Tests
             ((Action) (() => lexer.Tokenize("_xxx1.3xxx")))
             .Should()
             .Throw<ErrorAtPosition>()
-            .Where(e => e._position == 5 && e._length == 1)
-            ;
+            .Where(e => e._position == 5 && e._length == 1);
         }
         
         /// <summary>
@@ -171,8 +162,7 @@ namespace Tests
                 new Name("_xxx", 0),
                 new Number(1.3, 5, 3),
                 new Name("xxx", 9),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -185,8 +175,7 @@ namespace Tests
             ((Action) (() => lexer.Tokenize("1.xxx+")))
             .Should()
             .Throw<ErrorAtPosition>()
-            .Where(e => e._position == 0 && e._length == 3)
-            ;
+            .Where(e => e._position == 0 && e._length == 3);
         }
         
         /// <summary>
@@ -204,8 +193,7 @@ namespace Tests
                 new Number(2, 4, 1),
                 new Name("_3", 5),
                 new OperatorSymbol('+', 7),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -222,8 +210,7 @@ namespace Tests
                 new OperatorSymbol('+', 1),
                 new Number(1, 2, 1),
                 new Name("_", 3),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -236,8 +223,7 @@ namespace Tests
             .Should()
             .BeEquivalentTo(new List<Token> {
                 new OpeningParenthesis(0)
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -250,8 +236,7 @@ namespace Tests
             ((Action) (() => lexer.Tokenize("1.")))
             .Should()
             .Throw<ErrorAtPosition>()
-            .Where(e => e._position == 0 && e._length == 2)
-            ;
+            .Where(e => e._position == 0 && e._length == 2);
         }
 
         /// <summary>
@@ -264,8 +249,7 @@ namespace Tests
             ((Action) (() => lexer.Tokenize(".")))
             .Should()
             .Throw<ErrorAtPosition>()
-            .Where(e => e._position == 0 && e._length == 1)
-            ;
+            .Where(e => e._position == 0 && e._length == 1);
         }
 
         /// <summary>
@@ -277,8 +261,7 @@ namespace Tests
             lexer.Tokenize("π")
             .First()
             .Should()
-            .BeEquivalentTo(new NumberSymbol('π', 0))
-            ;
+            .BeEquivalentTo(new NumberSymbol('π', 0));
         }
 
         /// <summary>
@@ -292,8 +275,7 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new Number(1, 0, 1),
                 new OperatorSymbol('+', 1),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -308,8 +290,7 @@ namespace Tests
                 new OperatorSymbol('+', 0),
                 new OperatorSymbol('+', 1),
                 new OperatorSymbol('+', 2),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -323,8 +304,7 @@ namespace Tests
             .BeEquivalentTo(new List<Token> {
                 new Number(1, 0, 1),
                 new Number(1, 2, 1),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -340,8 +320,7 @@ namespace Tests
                 new Number(123, 0, 3),
                 new Comma(3),
                 new Number(456, 4, 3),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -357,8 +336,7 @@ namespace Tests
                 new Number(1, 0, 1),
                 new OperatorSymbol('+', 1),
                 new Number(2, 2, 1),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
 
         /// <summary>
@@ -392,8 +370,7 @@ namespace Tests
                 new Number(3, 20, 1),
                 new ClosingParenthesis(21),
                 new ClosingParenthesis(22),
-            }, options => options.RespectingRuntimeTypes())
-            ;
+            }, options => options.RespectingRuntimeTypes());
         }
         
     }
